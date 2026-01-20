@@ -1,2 +1,106 @@
-<html>
+<!DOCTYPE html>
+
+<html lang="ja">
+  <head>
+    <title>LINUX GAMING 🐧</title>
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="robots" content="index, follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet" href="index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Dela+Gothic+One&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+  </head>
+
+  <body>
+    <header id="header">
+      <div class="progressive-blur-container">
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="blur-filter"></div>
+        <div class="gradient"></div>
+      </div>
+      <div class="header-content">
+        <button>Button</button>
+      </div>
+    </header>
+
+    <section class="spacer-1">
+      <h1 class="center title">LINUX GAMING</h1>
+    </section>
+
+    <section class="spacer-1">
+      <div class="sections-nav">
+        <h3 class="center title">目次</h3>
+        <ul>
+          <li><a>AMD vs NVIDIA</a></li>
+          <li><a>DISTRIBUTION</a></li>
+          <li><a>PROTON</a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section>
+      <h2 class="center title">AMD vs NVIDIA</h2>
+      <p>
+        LinuxでゲームをするにおいてAMDのGPUを選択するのかNVIDIAのGPUを選択するのかは非常に重要な選択です。<br>
+        早いですが結論をいうと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br>
+        AMDGPUドライバはオープンソースになっているのに比べ、NVIDIAGPUのユーザ空間ドライバ(OpenGL、Vulkanなど)はプロプライエタリで提供されており、Linuxとの統合度に差があります。<br>
+        そのため必然的にAMDGPUドライバはNVIDIAGPUに比べて安定しています。<br>
+        また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。(今後修正される可能性があるため、最新情報を調べることをおすすめします)
+        しかし動画編集やストリーミング、機械学習ではNVIDIAGPUのほうが最適な場合があります。<br>
+        NVIDIAGPUにはハードウェアエンコーダのNVENCや汎用計算向けのCUDAがあり、このような用途ではAMDGPUと比べると優れたパフォーマンスが出る可能性があります。<br>
+        またNVIDIAのDLSSはAMDのFSRと比較してアップスケーリングの品質が高いため、4Kなどの高解像度でゲームをプレイしたい場合はNVIDIAのほうが適している場合もあります。<br>
+        これらのことを踏まえて自分がどの用にLinuxを使用するかでGPUベンダーを選ぶことをおすすめします。<br>
+      </p>
+    </section>
+
+    <section class="spacer-1">
+      <h2 class="center title">DISTRIBUTION</h2>
+      <p>
+        ディストリビューションとはLinuxカーネルとソフトウェア群を一つのパッケージにして利用できるようにしたものです。
+        これもまたLinuxを使う上で使用感につながるためディストリビューションの選択も非常に重要になってきます。
+        今回はゲームに最適なのを4つ紹介、説明しようと思います。
+
+        CachyOS
+        Arch Linuxをベースにパフォーマンス向上を目的としたディストリビューションです。
+        他のディストリビューションとは違い、x86-64-v3、x86-64-v4、Zen4のそれぞれの命令セット用にビルドされたパッケージを使用することができ、CPUの性能を最大限に引き出すことができます。
+        またBOREスケジューラを採用したlinux-cachyosカーネルを使用しており、ゲームのようなインタラクティブなタスクの応答性が向上しています。
+        デスクトップ環境やウィンドウマネージャは17種類から選択でき、自分の好みに合わせた環境を構築できます。
+        以下使用できるDE、WM一覧
+
+        Nobara
+        NobaraはFedoraをベースにゲーム向けに最適化されたディストリビューションです。
+        Proton-GEの開発者であるGloriousEggroll氏によってメンテナンスされており、ゲーム互換性に関する知見が反映されています。
+        コーデックやドライバ、OBSなどがプリインストールされており、インストール後すぐにゲームを始めることができます。
+        CachyOSほどのパフォーマンス最適化はありませんが、Fedoraベースのため安定性が高く、Linuxに不慣れな方でも扱いやすいディストリビューションです。
+
+        Bazzite
+        BazziteはFedora Atomicをベースにしたイミュータブル(不変)なディストリビューションです。
+        システム部分が読み取り専用になっており、アップデートの失敗や誤った操作でシステムが壊れることがほぼありません。
+        万が一問題が発生しても、以前の状態に簡単にロールバックできます。Steam Deckのようなゲームモードも搭載されており、コンソールライクな体験も可能です。
+        アプリケーションはFlatpakで管理するため、AURやdnfほどの自由度はありませんが、安定性を最優先したい方に最適なディストリビューションです。
+
+        Arch
+        Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
+        ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されます。
+        AUR(Arch User Repository)を利用することでほぼ全てのソフトウェアをインストールすることができます。
+        CachyOSのような最適化は自分で行う必要がありますが、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
+        また、Arch Wikiは非常に充実しており、Arch以外のディストリビューションを使う際にも参考になります。
+        ただしインストールや初期設定にはLinuxの知識が必要なため、ある程度Linuxに慣れてから挑戦することをおすすめします。
+      </p>
+    </section>
+  </body>
+
+  <script>
+    window.addEventListener('scroll', () => {
+      document.getElementById('header').classList.toggle('show', window.scrollY > 100);
+    });
+  </script>
 </html>
