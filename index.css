@@ -1,7 +1,6 @@
 @charset "utf-8";
 
 * {
-  all: unset;
   display: revert;
   box-sizing: border-box;
 }
@@ -25,6 +24,11 @@ html {
   line-height: 1.9;
 }
 
+a {
+  color: var(--foreground);
+  text-decoration: none;
+}
+
 ul {
   list-style-position: inside;
 }
@@ -35,7 +39,7 @@ li {
 
 h1 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); }
 h2 { font-size: clamp(2rem, 4.5vw, 3.5rem); }
-h3 { font-size: clamp(1.2rem, 2.6vw, 2rem); }
+h3 { font-size: clamp(1.3rem, 2.8vw, 2.2rem); }
 
 section { padding: 0 clamp(1rem, 8vw, 12rem); }
 
@@ -43,9 +47,14 @@ header {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 35px;
+  height: 45px;
   transform: translateY(-100%);
   transition: transform 0.3s;
+  background-color: color-mix(in srgb, var(--background) 50%, transparent);
+  border-bottom: 1px solid var(--foreground);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  z-index: 100;
 }
 
 header.show {
@@ -57,63 +66,16 @@ header.show {
   z-index: 10;
 }
 
-.progressive-blur-container {
-  position: absolute;
-  left: 0;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 60px;
-  pointer-events: none;
+.link {
+  font-size: 0.8rem;
+  font-style: italic;
+  text-decoration: underline;
 }
 
-.progressive-blur-container > .blur-filter {
-  position: absolute;
-  inset: 0;
+.underline {
+  font-style: italic;
+  text-decoration: underline;
 }
-
-.progressive-blur-container > .blur-filter:nth-child(1) {
-  backdrop-filter: blur(1px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,0) 60%, rgba(0,0,0,1) 70%, rgba(0,0,0,1) 90%, rgba(0,0,0,0));
-}
-
-.progressive-blur-container > .blur-filter:nth-child(2) {
-  backdrop-filter: blur(2px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,0) 50%, rgba(0,0,0,1) 60%, rgba(0,0,0,1) 80%, rgba(0,0,0,0) 90%);
-}
-
-.progressive-blur-container > .blur-filter:nth-child(3) {
-  backdrop-filter: blur(4px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 50%, rgba(0,0,0,1) 70%, rgba(0,0,0,0) 85%);
-}
-
-.progressive-blur-container > .blur-filter:nth-child(4) {
-  backdrop-filter: blur(8px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,0) 30%, rgba(0,0,0,1) 40%, rgba(0,0,0,1) 60%, rgba(0,0,0,0) 80%);
-}
-
-.progressive-blur-container > .blur-filter:nth-child(5) {
-  backdrop-filter: blur(16px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,0) 10%, rgba(0,0,0,1) 20%, rgba(0,0,0,1) 40%, rgba(0,0,0,0) 60%);
-}
-
-.progressive-blur-container > .blur-filter:nth-child(6) {
-  backdrop-filter: blur(32px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,1) 20%, rgba(0,0,0,0) 40%);
-}
-
-.progressive-blur-container > .blur-filter:nth-child(7) {
-  backdrop-filter: blur(64px);
-  mask: linear-gradient(to bottom, rgba(0,0,0,1), rgba(0,0,0,0) 30%);
-}
-
-.progressive-blur-container > .gradient {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to bottom, var(--background), transparent);
-}
-
-
 
 .spacer-1 { margin: 48px 0; }
 .spacer-2 { margin: 24px 0; }
@@ -127,4 +89,75 @@ header.show {
   margin: 0 auto;
   padding: 12px clamp(16px, 4vw, 48px);
   border: 1px solid var(--foreground);
+}
+
+.amd-title,
+.nvidia-title {
+  position: relative;
+}
+
+.amd-title::before,
+.amd-title::after,
+.nvidia-title::before,
+.nvidia-title::after {
+  content: "";
+  position: absolute;
+  inset: -50px;
+  z-index: -1;
+  border-radius: 50%;
+  filter: blur(60px);
+}
+
+.amd-title::before,
+.nvidia-title::before {
+  animation: glow 7s ease-in-out infinite;
+}
+
+.amd-title::after,
+.nvidia-title::after {
+  animation: glow-sub 7s ease-in-out infinite;
+}
+
+.amd-title::before { background: #ed1c24; }
+.amd-title::after { background: #ff6b35; }
+
+.nvidia-title::before { background: #76b900; }
+.nvidia-title::after { background: #00d4aa; animation-delay: -5s; }
+
+.nvidia-title::before { animation-delay: -5s; }
+
+.distro-title {
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  gap: 10px;
+}
+
+.distro-title svg {
+  color: var(--foreground);
+  width: clamp(1.5rem, 3.2vw, 2.5rem);
+  height: clamp(1.5rem, 3.2vw, 2.5rem);
+  flex-shrink: 0;
+  vertical-align: middle;
+  align-self: center;
+}
+
+.distro-title a {
+  display: flex;
+  align-items: center;
+}
+
+.distro-title h3 {
+  margin: 0;
+  line-height: 1;
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.2; transform: scale(0.8) translateX(-20px); }
+  50% { opacity: 0.3; transform: scale(1.3) translateX(20px); }
+}
+
+@keyframes glow-sub {
+  0%, 100% { opacity: 0.1; transform: scale(1.2) translateY(20px); }
+  50% { opacity: 0.3; transform: scale(0.9) translateY(-20px); }
 }

@@ -12,23 +12,11 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Dela+Gothic+One&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
   </head>
 
   <body>
     <header id="header">
-      <div class="progressive-blur-container">
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="blur-filter"></div>
-        <div class="gradient"></div>
-      </div>
-      <div class="header-content">
-        <button>Button</button>
-      </div>
     </header>
 
     <section class="spacer-1">
@@ -47,60 +35,105 @@
     </section>
 
     <section>
-      <h2 class="center title">AMD vs NVIDIA</h2>
+      <h2 class="center title">
+        <span class="amd-title">AMD</span>
+        vs
+        <span class="nvidia-title">NVIDIA</span>
+      </h2>
       <p>
         LinuxでゲームをするにおいてAMDのGPUを選択するのかNVIDIAのGPUを選択するのかは非常に重要な選択です。<br>
         早いですが結論をいうと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br>
         AMDGPUドライバはオープンソースになっているのに比べ、NVIDIAGPUのユーザ空間ドライバ(OpenGL、Vulkanなど)はプロプライエタリで提供されており、Linuxとの統合度に差があります。<br>
         そのため必然的にAMDGPUドライバはNVIDIAGPUに比べて安定しています。<br>
-        また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。(今後修正される可能性があるため、最新情報を調べることをおすすめします)
+        また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。<span class="underline">(今後修正される可能性があるため、最新情報を調べることをおすすめします)</span><br>
         しかし動画編集やストリーミング、機械学習ではNVIDIAGPUのほうが最適な場合があります。<br>
         NVIDIAGPUにはハードウェアエンコーダのNVENCや汎用計算向けのCUDAがあり、このような用途ではAMDGPUと比べると優れたパフォーマンスが出る可能性があります。<br>
         またNVIDIAのDLSSはAMDのFSRと比較してアップスケーリングの品質が高いため、4Kなどの高解像度でゲームをプレイしたい場合はNVIDIAのほうが適している場合もあります。<br>
         これらのことを踏まえて自分がどの用にLinuxを使用するかでGPUベンダーを選ぶことをおすすめします。<br>
+
       </p>
+      <h3 class="center title spacer-2">参考</h3>
+      <a class="link" href="https://forums.developer.nvidia.com/t/directx12-performance-is-terrible-on-linux/303207">DirectX12 performance is terrible on Linux</a><br>
+      <a class="link" href="https://forums.developer.nvidia.com/t/please-sort-out-the-dx12-vkd3d-proton-performance-under-linux/284642">Please sort out the DX12 (vkd3d-proton) performance under Linux</a><br>
     </section>
 
     <section class="spacer-1">
       <h2 class="center title">DISTRIBUTION</h2>
       <p>
         ディストリビューションとはLinuxカーネルとソフトウェア群を一つのパッケージにして利用できるようにしたものです。
-        これもまたLinuxを使う上で使用感につながるためディストリビューションの選択も非常に重要になってきます。
+        Linuxを使う上で使用感につながるためディストリビューションの選択も非常に重要になってきます。
         今回はゲームに最適なのを4つ紹介、説明しようと思います。
+      </p>
 
-        CachyOS
+      <div class="distro-title spacer-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28.8 28.8">
+          <path fill="currentColor" d="M7.7785653 4.4693458H19.677168l-3.011712 5.208633h-6.453077L7.5235656 14.326065l2.7257804 4.715231h12.588159l-3.089419 5.339151H7.5231884L1.6249999 14.183099l5.6462065-9.7635461Z"/>
+          <ellipse cx="25.144464" cy="16.879213" fill="currentColor" rx="2.0305362" ry="2.0268083"/>
+          <ellipse cx="20.860802" cy="12.156326" fill="currentColor" rx="1.5416063" ry="1.538776"/>
+          <ellipse cx="22.972105" cy="6.8296065" fill="currentColor" rx=".79385597" ry=".79239857"/>
+        </svg>
+        <a href="https://cachyos.org/">
+          <h3 class="center title">CachyOS</h3>
+        </a>
+      </div>
+      <p>
         Arch Linuxをベースにパフォーマンス向上を目的としたディストリビューションです。
-        他のディストリビューションとは違い、x86-64-v3、x86-64-v4、Zen4のそれぞれの命令セット用にビルドされたパッケージを使用することができ、CPUの性能を最大限に引き出すことができます。
+        他のディストリビューションとは違いは、x86-64-v3、x86-64-v4、Zen4のそれぞれの命令セット用にビルドされたパッケージを使用することができ、CPUの性能を最大限に引き出すことができます。
         またBOREスケジューラを採用したlinux-cachyosカーネルを使用しており、ゲームのようなインタラクティブなタスクの応答性が向上しています。
         デスクトップ環境やウィンドウマネージャは17種類から選択でき、自分の好みに合わせた環境を構築できます。
         以下使用できるDE、WM一覧
+      </p>
 
-        Nobara
+      <div class="distro-title spacer-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 150">
+         <path fill="currentColor" fill-rule="evenodd" d="M31.5,14.3c-7.71,.62-14.36,6.26-16.29,13.82-.68,2.68-.59,93.28-.59,93.28,2.59,16.95,24.51,22.48,34,8.25,9.74-14.58,32.4-8.83,33.77,8.57,.07,.89,.08-22.21,.08-22.21-1.92-8.91-8.35-14.75-18.04-15.42-6.73-.52-10.97-3.83-12.35-9.64-.62-2.63-.46-16.79,.24-20.03,5.77-25.36,41.03-25.94,47.82-1.22,.19,.83,.23,.9,.75,1.04,4.61,1.27,18.06,5.17,18.06,5.23-.74,.34-14.73,4.28-17.97,5.21v40.23c3.26,21.29,32.55,21.87,36.86,1.04,.43-2.51,.26-51.43-.2-54.58C132.32,25.56,85.21,1.4,47.77,21.16c-4.03-4.78-9.77-7.42-16.28-6.86"/>
+         <path fill="currentColor" fill-rule="evenodd" d="M73.08,65.86c-10.63,2.44-13.25,16.62-4.15,22.5,9.16,5.92,20.92-1.87,19.05-12.62-1.17-6.73-8.22-11.41-14.89-9.88"/>
+       </svg>
+        <a href="https://cachyos.org/">
+          <h3 class="center title">Nobara</h3>
+        </a>
+      </div>
+      <p>
         NobaraはFedoraをベースにゲーム向けに最適化されたディストリビューションです。
         Proton-GEの開発者であるGloriousEggroll氏によってメンテナンスされており、ゲーム互換性に関する知見が反映されています。
         コーデックやドライバ、OBSなどがプリインストールされており、インストール後すぐにゲームを始めることができます。
         CachyOSほどのパフォーマンス最適化はありませんが、Fedoraベースのため安定性が高く、Linuxに不慣れな方でも扱いやすいディストリビューションです。
+      </p>
 
-        Bazzite
+      <div class="distro-title spacer-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600">
+          <path d="M 50,150 C 50,94.7715 94.7715,50 150,50 h 150 c 138.071,0 250,111.929 250,250 v 0 c 0,138.071 -111.929,250 -250,250 v 0 C 161.929,550 50,438.071 50,300 Z" fill="currentColor" fill-opacity="0.3"/>
+          <path fill-rule="evenodd" clip-rule="evenodd" d="m 178,50 h 64 V 178 H 376.185 C 432.416,178 478,223.584 478,279.815 478,389.269 389.27,478 279.815,478 223.584,478 178,432.416 178,376.185 V 242 H 50 v -64 h 128 z m 64,192 V 376.185 C 242,397.07 258.93,414 279.815,414 353.923,414 414,353.923 414,279.815 414,258.93 397.07,242 376.185,242 Z" fill="currentColor" fill-opacity="0.5"/>
+          <path d="M 242,110 C 242,93.4315 228.569,80 212,80 h -4 c -16.569,0 -30,13.4315 -30,30 v 68 h -68 c -16.5685,0 -30,13.431 -30,30 v 4 c 0,16.569 13.4315,30 30,30 h 68 v 68 c 0,16.569 13.431,30 30,30 h 4 c 16.569,0 30,-13.431 30,-30 v -68 h 68 c 16.569,0 30,-13.431 30,-30 v -4 c 0,-16.569 -13.431,-30 -30,-30 h -68 z" fill="currentColor" fill-opacity="0.7"/>
+          <path d="m 312.5,205.67 c 3.333,1.924 3.333,6.736 0,8.66 l -21,12.124 c -3.333,1.925 -7.5,-0.481 -7.5,-4.33 v -24.248 c 0,-3.849 4.167,-6.255 7.5,-4.33 z" fill="currentColor"/>
+          <path d="m 214.33,312.5 c -1.924,3.333 -6.736,3.333 -8.66,0 l -12.124,-21 c -1.925,-3.333 0.481,-7.5 4.33,-7.5 h 24.248 c 3.849,0 6.255,4.167 4.33,7.5 z" fill="currentColor"/>
+          <path d="m 205.67,107.5 c 1.924,-3.333 6.736,-3.333 8.66,0 l 12.124,21 c 1.925,3.333 -0.481,7.5 -4.33,7.5 h -24.248 c -3.849,0 -6.255,-4.167 -4.33,-7.5 z" fill="currentColor"/>
+          <path d="m 107.5,214.33 c -3.333,-1.924 -3.333,-6.736 0,-8.66 l 21,-12.124 c 3.333,-1.925 7.5,0.481 7.5,4.33 v 24.248 c 0,3.849 -4.167,6.255 -7.5,4.33 z" fill="currentColor"/>
+        </svg>
+        <a href="https://cachyos.org/">
+          <h3 class="center title">Bazzite</h3>
+        </a>
+      </div>
+      <p>
         BazziteはFedora Atomicをベースにしたイミュータブル(不変)なディストリビューションです。
         システム部分が読み取り専用になっており、アップデートの失敗や誤った操作でシステムが壊れることがほぼありません。
         万が一問題が発生しても、以前の状態に簡単にロールバックできます。Steam Deckのようなゲームモードも搭載されており、コンソールライクな体験も可能です。
         アプリケーションはFlatpakで管理するため、AURやdnfほどの自由度はありませんが、安定性を最優先したい方に最適なディストリビューションです。
-
-        Arch
-        Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
-        ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されます。
-        AUR(Arch User Repository)を利用することでほぼ全てのソフトウェアをインストールすることができます。
-        CachyOSのような最適化は自分で行う必要がありますが、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
-        また、Arch Wikiは非常に充実しており、Arch以外のディストリビューションを使う際にも参考になります。
-        ただしインストールや初期設定にはLinuxの知識が必要なため、ある程度Linuxに慣れてから挑戦することをおすすめします。
       </p>
+
+      Arch
+      Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
+      ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されます。
+      AUR(Arch User Repository)を利用することでほぼ全てのソフトウェアをインストールすることができます。
+      CachyOSのような最適化は自分で行う必要がありますが、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
+      また、Arch Wikiは非常に充実しており、Arch以外のディストリビューションを使う際にも参考になります。
+      ただしインストールや初期設定にはLinuxの知識が必要なため、ある程度Linuxに慣れてから挑戦することをおすすめします。
     </section>
   </body>
 
   <script>
     window.addEventListener('scroll', () => {
-      document.getElementById('header').classList.toggle('show', window.scrollY > 100);
+      document.getElementById('header').classList.toggle('show', window.scrollY > 325);
     });
   </script>
 </html>
