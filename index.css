@@ -154,10 +154,10 @@ header.show {
 
 @keyframes glow {
   0%, 100% { opacity: 0.2; transform: scale(0.8) translateX(-20px); }
-  50% { opacity: 0.3; transform: scale(1.3) translateX(20px); }
+  50% { opacity: 0.4; transform: scale(1.3) translateX(20px); }
 }
 
 @keyframes glow-sub {
   0%, 100% { opacity: 0.1; transform: scale(1.2) translateY(20px); }
-  50% { opacity: 0.3; transform: scale(0.9) translateY(-20px); }
+  50% { opacity: 0.4; transform: scale(0.9) translateY(-20px); }
 }
