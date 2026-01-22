@@ -1,6 +1,25 @@
 <!DOCTYPE html>
 
 <html lang="ja">
+  <svg style="position: absolute; width: 0; height: 0;">
+    <defs>
+      <filter id="rgb-split">
+        <feOffset in="SourceGraphic" dx="-2" dy="0" result="red">
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+        </feOffset>
+        <feOffset in="SourceGraphic" dx="2" dy="0" result="blue">
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 1 0 0  0 0 0 1 0"/>
+        </feOffset>
+        <feOffset in="SourceGraphic" dx="0" dy="0" result="green">
+          <feColorMatrix type="matrix" values="0 0 0 0 0  0 1 0 0 0  0 0 0 0 0  0 0 0 1 0"/>
+        </feOffset>
+        <feBlend mode="screen" in="red" in2="green" result="rg"/>
+        <feBlend mode="screen" in="rg" in2="blue"/>
+      </filter>
+    </defs>
+  </svg>
+
+
   <head>
     <title>LINUX GAMING 🐧</title>
     <meta charset="UTF-8">
@@ -19,8 +38,16 @@
     <header id="header">
     </header>
 
-    <section class="spacer-1">
+    <div class="arch-gallery">
+      <img class="card" src="assets/twp2.png">
+      <img class="card" src="assets/twp1.png">
+      <img class="card" src="assets/twp2.png">
+      <img class="card" src="assets/twp1.png">
+    </div>
+
+    <section id="amd-vs-nvidia" class="spacer-1">
       <h1 class="center title">LINUX GAMING</h1>
+      <h3 class="center title">脱Windows!!!</h3>
     </section>
 
     <section class="spacer-1">
@@ -42,22 +69,26 @@
       </h2>
       <p>
         LinuxでゲームをするにおいてAMDのGPUを選択するのかNVIDIAのGPUを選択するのかは非常に重要な選択です。<br>
-        早いですが結論をいうと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br>
+        早いですが結論をいうと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br><br>
         AMDGPUドライバはオープンソースになっているのに比べ、NVIDIAGPUのユーザ空間ドライバ(OpenGL、Vulkanなど)はプロプライエタリで提供されており、Linuxとの統合度に差があります。<br>
         そのため必然的にAMDGPUドライバはNVIDIAGPUに比べて安定しています。<br>
-        また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。<span class="underline">(今後修正される可能性があるため、最新情報を調べることをおすすめします)</span><br>
+        また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。<span class="underline">(※今後修正される可能性があるため、最新情報を調べることをおすすめします)</span><br><br>
         しかし動画編集やストリーミング、機械学習ではNVIDIAGPUのほうが最適な場合があります。<br>
-        NVIDIAGPUにはハードウェアエンコーダのNVENCや汎用計算向けのCUDAがあり、このような用途ではAMDGPUと比べると優れたパフォーマンスが出る可能性があります。<br>
+        NVIDIAGPUにはハードウェアエンコーダのNVENCや汎用計算向けのCUDAがあり、特に機械学習の分野ではCUDA向けに最適化されたライブラリやフレームワークが豊富です。
+        AMDにもROCmという同様のGPGPU環境がありますが、対応GPUが限られていることやCUDAほどエコシステムが成熟していないため、機械学習用途ではNVIDIAの方が扱いやすいのが現状です。<br>
         またNVIDIAのDLSSはAMDのFSRと比較してアップスケーリングの品質が高いため、4Kなどの高解像度でゲームをプレイしたい場合はNVIDIAのほうが適している場合もあります。<br>
-        これらのことを踏まえて自分がどの用にLinuxを使用するかでGPUベンダーを選ぶことをおすすめします。<br>
-
+        これらのことを踏まえて自分がどのようにLinuxを使用するかでGPUベンダーを選ぶことをおすすめします。<br>
       </p>
       <h3 class="center title spacer-2">参考</h3>
-      <a class="link" href="https://forums.developer.nvidia.com/t/directx12-performance-is-terrible-on-linux/303207">DirectX12 performance is terrible on Linux</a><br>
-      <a class="link" href="https://forums.developer.nvidia.com/t/please-sort-out-the-dx12-vkd3d-proton-performance-under-linux/284642">Please sort out the DX12 (vkd3d-proton) performance under Linux</a><br>
+      <a class="link" href="https://forums.developer.nvidia.com/t/directx12-performance-is-terrible-on-linux/303207">
+        <p class="center">DirectX12 performance is terrible on Linux</p>
+      </a>
+      <a class="link" href="https://forums.developer.nvidia.com/t/please-sort-out-the-dx12-vkd3d-proton-performance-under-linux/284642">
+        <p class="center">Please sort out the DX12 (vkd3d-proton) performance under Linux</p>
+      </a>
     </section>
 
-    <section class="spacer-1">
+    <section id="distribution" class="spacer-1">
       <h2 class="center title">DISTRIBUTION</h2>
       <p>
         ディストリビューションとはLinuxカーネルとソフトウェア群を一つのパッケージにして利用できるようにしたものです。
@@ -77,11 +108,11 @@
         </a>
       </div>
       <p>
-        Arch Linuxをベースにパフォーマンス向上を目的としたディストリビューションです。
-        他のディストリビューションとは違いは、x86-64-v3、x86-64-v4、Zen4のそれぞれの命令セット用にビルドされたパッケージを使用することができ、CPUの性能を最大限に引き出すことができます。
-        またBOREスケジューラを採用したlinux-cachyosカーネルを使用しており、ゲームのようなインタラクティブなタスクの応答性が向上しています。
-        デスクトップ環境やウィンドウマネージャは17種類から選択でき、自分の好みに合わせた環境を構築できます。
-        以下使用できるDE、WM一覧
+        CachyOSはArch Linuxをベースにパフォーマンス向上を目的としたディストリビューションです。
+        他のディストリビューションとの大きな違いは、x86-64-v3、x86-64-v4、Zen4のそれぞれの命令セット用に最適化されたパッケージを使用できる点で、CPUの性能を最大限に引き出すことができます。
+        またBOREスケジューラを採用したlinux-cachyosカーネルを使用しており、ゲームのようなインタラクティブなタスクの応答性が大幅に向上しています。
+        デスクトップ環境やウィンドウマネージャは17種類から選択でき、KDE PlasmaやGNOME、Hyprlandなど自分の好みに合わせた環境を構築できます。
+        Archベースのためパッケージは常に最新で、AURも利用可能です。
       </p>
 
       <div class="distro-title spacer-2">
@@ -89,14 +120,15 @@
          <path fill="currentColor" fill-rule="evenodd" d="M31.5,14.3c-7.71,.62-14.36,6.26-16.29,13.82-.68,2.68-.59,93.28-.59,93.28,2.59,16.95,24.51,22.48,34,8.25,9.74-14.58,32.4-8.83,33.77,8.57,.07,.89,.08-22.21,.08-22.21-1.92-8.91-8.35-14.75-18.04-15.42-6.73-.52-10.97-3.83-12.35-9.64-.62-2.63-.46-16.79,.24-20.03,5.77-25.36,41.03-25.94,47.82-1.22,.19,.83,.23,.9,.75,1.04,4.61,1.27,18.06,5.17,18.06,5.23-.74,.34-14.73,4.28-17.97,5.21v40.23c3.26,21.29,32.55,21.87,36.86,1.04,.43-2.51,.26-51.43-.2-54.58C132.32,25.56,85.21,1.4,47.77,21.16c-4.03-4.78-9.77-7.42-16.28-6.86"/>
          <path fill="currentColor" fill-rule="evenodd" d="M73.08,65.86c-10.63,2.44-13.25,16.62-4.15,22.5,9.16,5.92,20.92-1.87,19.05-12.62-1.17-6.73-8.22-11.41-14.89-9.88"/>
        </svg>
-        <a href="https://cachyos.org/">
+        <a href="https://nobaraproject.org/">
           <h3 class="center title">Nobara</h3>
         </a>
       </div>
       <p>
         NobaraはFedoraをベースにゲーム向けに最適化されたディストリビューションです。
-        Proton-GEの開発者であるGloriousEggroll氏によってメンテナンスされており、ゲーム互換性に関する知見が反映されています。
-        コーデックやドライバ、OBSなどがプリインストールされており、インストール後すぐにゲームを始めることができます。
+        Proton-GEの開発者であるGloriousEggroll氏によってメンテナンスされており、長年のゲーム互換性に関する知見が反映されています。
+        コーデックやドライバ、OBS Studio、Discord、Steamなどがプリインストールされており、インストール後すぐにゲームや配信を始めることができます。
+        また、ゲームに必要なカーネルパラメータやシステム設定が事前に最適化されているため、面倒な設定作業が不要です。
         CachyOSほどのパフォーマンス最適化はありませんが、Fedoraベースのため安定性が高く、Linuxに不慣れな方でも扱いやすいディストリビューションです。
       </p>
 
@@ -110,24 +142,72 @@
           <path d="m 205.67,107.5 c 1.924,-3.333 6.736,-3.333 8.66,0 l 12.124,21 c 1.925,3.333 -0.481,7.5 -4.33,7.5 h -24.248 c -3.849,0 -6.255,-4.167 -4.33,-7.5 z" fill="currentColor"/>
           <path d="m 107.5,214.33 c -3.333,-1.924 -3.333,-6.736 0,-8.66 l 21,-12.124 c 3.333,-1.925 7.5,0.481 7.5,4.33 v 24.248 c 0,3.849 -4.167,6.255 -7.5,4.33 z" fill="currentColor"/>
         </svg>
-        <a href="https://cachyos.org/">
+        <a href="https://bazzite.gg/">
           <h3 class="center title">Bazzite</h3>
         </a>
       </div>
       <p>
         BazziteはFedora Atomicをベースにしたイミュータブル(不変)なディストリビューションです。
         システム部分が読み取り専用になっており、アップデートの失敗や誤った操作でシステムが壊れることがほぼありません。
-        万が一問題が発生しても、以前の状態に簡単にロールバックできます。Steam Deckのようなゲームモードも搭載されており、コンソールライクな体験も可能です。
-        アプリケーションはFlatpakで管理するため、AURやdnfほどの自由度はありませんが、安定性を最優先したい方に最適なディストリビューションです。
+        万が一問題が発生しても、以前の状態に簡単にロールバックできるため、常に安定した環境を維持できます。
+        Steam Deckと同様のゲームモードも搭載されており、起動するとコントローラーだけで操作できるコンソールライクな体験も可能です。
+        アプリケーションは主にFlatpakで管理するため、AURやdnfほどの自由度はありませんが、その分依存関係の問題に悩まされることがありません。
+        安定性を最優先したい方や、Steam Deckのような体験をデスクトップでも味わいたい方に最適なディストリビューションです。
       </p>
 
-      Arch
-      Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
-      ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されます。
-      AUR(Arch User Repository)を利用することでほぼ全てのソフトウェアをインストールすることができます。
-      CachyOSのような最適化は自分で行う必要がありますが、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
-      また、Arch Wikiは非常に充実しており、Arch以外のディストリビューションを使う際にも参考になります。
-      ただしインストールや初期設定にはLinuxの知識が必要なため、ある程度Linuxに慣れてから挑戦することをおすすめします。
+      <div class="distro-title spacer-2">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <path fill="currentColor" d="M186.5749664,162.1522217c18.1462555,15.3119202,47.4286499,31.2741089,72.8443756,41.2323303c-21.8627777-15.8652802-43.6183624-33.7482147-65.3347321-57.154892c18.0764465-38.5456619,39.6597595-91.7860489,61.9125214-146.1313171c36.2790833,92.6975708,103.8991699,232.2012177,194.4854431,397.7175293c-24.6089478-13.5125732-46.9073181-21.2070618-69.9294128-27.1514282c7.6297302,4.355011,25.6652222,14.1963806,37.2369995,22.1072998c18.2805481,12.4972839,35.1973572,26.1633911,51.106781,39.2492065C483.0965576,458.1317749,497.471283,484.7801514,512,511.9016418c-72.2558289-41.8372192-142.4728088-75.7279663-200-86.1953125c18.8333435-104.471344-54.8805847-166.1076355-96.760025-99.6094055c-16.1255188,25.6020813-20.4871674,67.7855835-12.8402405,99.1325684C129.6666718,439.2349854,58.5026627,478.4394836,0,511.9016418C68.1430206,388.4253845,137.0383453,263.2532959,186.5749664,162.1522217z"/>
+        </svg>
+        <a href="https://archlinux.org/">
+          <h3 class="center title">Arch Linux</h3>
+        </a>
+      </div>
+      <p>
+        Arch Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
+        ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されるため、新しいハードウェアやゲームへの対応が早いのが特徴です。
+        AUR(Arch User Repository)を利用することで、公式リポジトリにないソフトウェアも含めてほぼ全てのアプリケーションをインストールすることができます。
+        CachyOSのような最適化は自分で行う必要がありますが、linux-zenカーネルの導入やCPUスケジューラの調整など、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
+        また、Arch Wikiは非常に充実しており、トラブルシューティングや設定方法が詳しく解説されているため、Arch以外のディストリビューションを使う際にも参考になります。
+        ただしインストールや初期設定にはLinuxの知識が必要なため、他のディストリビューションである程度Linuxに慣れてから挑戦することをおすすめします。
+      </p>
+    </section>
+
+    <section id="proton">
+      <h2 class="center title">PROTON</h2>
+      <p>
+        ほとんどのゲームはWindows向けに開発されており、そのままではLinux上で実行することができません。
+        LinuxでWindowsゲームをプレイするには、Valveが開発した互換レイヤー「Proton」を使用します。<br><br>
+
+        ProtonはWINE（WindowsアプリケーションをLinux上で動作させる互換レイヤー）をベースに、ゲーム向けの最適化が施されています。
+        WINEがWindows APIの呼び出しをLinux向けに翻訳することで、Windowsアプリケーションの実行を可能にしています。<br><br>
+
+        しかし、ほとんどのゲームはDirectXというWindows専用のグラフィックスAPIを使用しており、これはLinuxでは直接動作しません。
+        そこでProtonにはDXVKとVKD3Dというコンポーネントが組み込まれています。
+        これらはDirectXの命令をクロスプラットフォームなグラフィックスAPIであるVulkanに変換することで、Linux上での描画を実現しています。
+        DXVKがDirectX 9/10/11を、VKD3DがDirectX 12をそれぞれVulkanに変換しています。<br><br>
+
+        <figure class="spacer-2"">
+          <img src="assets/zzz1.png">
+          <figcaption>Protonを使いArchLinux上で動いているZenlessZoneZero</figcaption>
+        </figure>
+
+        Steamでは多くのゲームがProtonによって動作確認されており、Steam Deckの登場以降は対応タイトルが急速に増加しています。
+        対応状況は<a class="link" href="https://www.protondb.com/">ProtonDB</a>で確認できます。<br><br>
+
+        しかし全てのゲームがSteamにあるわけではありません。
+        Epic GamesやGOG、Amazon Gamesなど他のプラットフォームのゲームや、スタンドアロンのWindows用ゲームもLinuxでプレイすることができます。<br><br>
+
+        最も簡単な方法は、Steamに外部のゲームを追加することです。
+        ライブラリから「非Steamゲームを追加」を選び、互換性オプションでProtonを有効にすれば、Steam側が必要な設定を全て行ってくれます。<br><br>
+
+        より多くのプラットフォームを一元管理したい場合は、<a class="link" href="https://lutris.net/">Lutris</a>や<a class="link" href="https://heroicgameslauncher.com/">Heroic Games Launcher</a>がおすすめです。
+        Heroic Games LauncherはEpic Games、GOG、Amazon Gamesのゲームを管理でき、シンプルなUIで初心者にも扱いやすいランチャーです。
+        Lutrisはさらに幅広く、Battle.net、EA App、Ubisoft Connectなど様々なプラットフォームに対応しており、コミュニティが作成したインストールスクリプトを使って複雑な設定も自動化できます。<br><br>
+
+        これらのツールはWINEやProtonのバージョン管理も簡単に行え、ゲームごとに最適な設定を適用することができます。
+      </p>
+
     </section>
   </body>
 

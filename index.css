@@ -21,7 +21,7 @@ html {
   font-family: "Noto Sans JP";
   font-size: 1.0875rem;
   font-weight: 500;
-  line-height: 1.9;
+  line-height: 2.15;
 }
 
 a {
@@ -35,6 +35,21 @@ ul {
 
 li {
   font-weight: bold;
+}
+
+figcaption {
+  margin-top: 10px;
+  text-align: center;
+  font-style: italic;
+  font-size: 0.7rem;
+  font-weight: bold;
+}
+
+img {
+  width: 80%;
+  display: block;
+  margin: 0 auto;
+  border-radius: 14px;
 }
 
 h1 { font-size: clamp(2.5rem, 5.5vw, 4.25rem); }
@@ -77,19 +92,50 @@ header.show {
   text-decoration: underline;
 }
 
-.spacer-1 { margin: 48px 0; }
-.spacer-2 { margin: 24px 0; }
+.spacer-1 { margin-top: 48px; margin-bottom: 48px; }
+.spacer-2 { margin-top: 24px; margin-bottom: 24px; }
 .center { text-align: center; }
 .title {
   font-family: "BBH Hegarty", "Dela Gothic One";
 }
 
+
 .sections-nav {
   width: clamp(300px, 80%, 850px);
   margin: 0 auto;
-  padding: 12px clamp(16px, 4vw, 48px);
+  padding: 12px clamp(16px, 4vw, 48px) 48px;
   border: 1px solid var(--foreground);
 }
+
+.arch-gallery {
+  top: -200px;
+  padding-top: 150px;
+  position: absolute;
+  left: 50%;
+  max-height: 50vh;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  z-index: -1;
+  mask-image: linear-gradient(to bottom, black 00%, transparent 100%);
+}
+
+.arch-gallery img {
+  width: 35vw;
+  border: none;
+  border-radius: 0;
+  filter: url(#rgb-split);
+}
+
+.arch-gallery img:not(:first-child) {
+  margin-left: -10vw;
+}
+
+.arch-gallery img:nth-child(1) { transform: translateY(30px) rotate(-8deg); }
+.arch-gallery img:nth-child(2) { transform: translateY(10px) rotate(-3deg); }
+.arch-gallery img:nth-child(3) { transform: translateY(10px) rotate(3deg); }
+.arch-gallery img:nth-child(4) { transform: translateY(30px) rotate(8deg); }
 
 .amd-title,
 .nvidia-title {
@@ -126,6 +172,29 @@ header.show {
 
 .nvidia-title::before { animation-delay: -5s; }
 
+#distribution h2,
+#proton h2 {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+#distribution h2 {
+  filter: drop-shadow(0 0 30px goldenrod);
+}
+#proton h2 {
+  filter: drop-shadow(0 0 30px mediumpurple);
+}
+
+@keyframes glow {
+  0%, 100% { opacity: 0.2; transform: scale(0.8) translateX(-20px); }
+  50% { opacity: 0.5; transform: scale(1.3) translateX(20px); }
+}
+
+@keyframes glow-sub {
+  0%, 100% { opacity: 0.1; transform: scale(1.2) translateY(20px); }
+  50% { opacity: 0.2; transform: scale(0.9) translateY(-20px); }
+}
+
 .distro-title {
   display: flex;
   justify-content: center;
@@ -150,14 +219,4 @@ header.show {
 .distro-title h3 {
   margin: 0;
   line-height: 1;
-}
-
-@keyframes glow {
-  0%, 100% { opacity: 0.2; transform: scale(0.8) translateX(-20px); }
-  50% { opacity: 0.4; transform: scale(1.3) translateX(20px); }
-}
-
-@keyframes glow-sub {
-  0%, 100% { opacity: 0.1; transform: scale(1.2) translateY(20px); }
-  50% { opacity: 0.4; transform: scale(0.9) translateY(-20px); }
 }
