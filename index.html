@@ -31,10 +31,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=BBH+Hegarty&family=Dela+Gothic+One&family=Noto+Sans+JP:wght@100..900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
   </head>
 
   <body>
     <header id="header">
+      <button id="back-to-top">
+        <span class="material-symbols-outlined">arrow_upward</span>上に戻る
+      </button>
     </header>
 
     <div class="arch-gallery">
@@ -57,6 +61,7 @@
           <li><a href="#amd-vs-nvidia">AMD vs NVIDIA</a></li>
           <li><a href="#distribution">DISTRIBUTION</a></li>
           <li><a href="#proton">PROTON</a></li>
+          <li><a href="#conclusion">最後に</a></li>
         </ul>
       </div>
     </section>
@@ -69,7 +74,7 @@
         また最近のWindowsはタスクバーのカレンダーやウィジェットなどにWebViewを多用しており、ネイティブアプリに比べてパフォーマンスとメモリを圧迫します。
         これらの要因が重なり、ゲームに使えるシステムリソースが削られてしまいます。<br><br>
         一方Linuxでは不要なAIや広告は入っておらず、ゲーム中にアップデート通知が割り込んでくることもありません。
-        Windowsに比べてバックグラウンドで動いているプロセス数も少なく、システムリソースをゲームに集中させることができます。
+        Windowsに比べてバックグラウンドで動いているプロセス数も少なく、リソースをゲームに集中させることができます。
         そのためゲームによってはWindowsよりも高いパフォーマンスが出ることもあります。<br><br>
         パフォーマンスを最大限引き出したいゲーマーにとって、LinuxはWindowsより有利な選択肢と言えるでしょう。<br><br>
         しかしLinuxでゲームをする際には<mark> Linuxでは一部のアンチチートが入っているゲームが動かない </mark>などのいくつか気をつけることがあります。
@@ -235,11 +240,24 @@
         これらのツールはWINEやProtonのバージョン管理も簡単に行え、ゲームごとに最適な設定を適用することができます。
       </p>
     </section>
+
+    <section class="spacer-1" id="conclusion">
+      <h2 class="center title">最後に</h2>
+      <p>
+        Linux gamingは年々進化しており、Steam Deckの登場以降は対応タイトルも急速に増えています。
+        完璧ではありませんが、Windowsの煩わしさから解放されてゲームを楽しめる環境が整ってきています。<br><br>
+        興味があればぜひ試してみてください。
+      </p>
+    </section>
   </body>
 
   <script>
     window.addEventListener('scroll', () => {
       document.getElementById('header').classList.toggle('show', window.scrollY > 325);
+    });
+
+    document.getElementById('back-to-top').addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
     });
   </script>
 </html>
