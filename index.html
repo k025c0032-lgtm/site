@@ -85,7 +85,7 @@
       </h2>
       <p>
         LinuxでゲームをするにおいてAMDのGPUを選択するのかNVIDIAのGPUを選択するのかは非常に重要な選択です。<br>
-        早いですが結論をいうと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br><br>
+        先に結論を言うと多くの場合でAMDのGPUを選んでおくと不具合なくゲームをすることができると思います。<br><br>
         AMDGPUドライバはオープンソースになっているのに比べ、NVIDIAGPUのユーザ空間ドライバ(OpenGL、Vulkanなど)はプロプライエタリで提供されており、Linuxとの統合度に差があります。<br>
         そのため必然的にAMDGPUドライバはNVIDIAGPUに比べて安定しています。<br>
         また2026年1月現在ではNVIDIAGPUでDirectX12タイトルを動かした際にパフォーマンスが約20〜30%低下するバグがあり、依然として修正されていません。<span class="underline">(※今後修正される可能性があるため、最新情報を調べることをおすすめします)</span><br><br>
@@ -182,7 +182,7 @@
       <p>
         Arch Linuxは最小限のベースシステムから自分だけの環境を構築できるディストリビューションです。
         ローリングリリースを採用しており、Mesaやカーネル、ドライバなどが常に最新の状態で提供されるため、新しいハードウェアやゲームへの対応が早いのが特徴です。
-        AUR(Arch User Repository)を利用することで、公式リポジトリにないソフトウェアも含めてほぼ全てのアプリケーションをインストールすることができます。
+        AUR(Arch User Repository)を利用することで、公式リポジトリにないソフトウェアも含めて非常に多くのアプリケーションをインストールすることができます。
         CachyOSのような最適化は自分で行う必要がありますが、linux-zenカーネルの導入やCPUスケジューラの調整など、自分の環境に合わせて完全にカスタマイズしたい方には最適です。
         また、Arch Wikiは非常に充実しており、トラブルシューティングや設定方法が詳しく解説されているため、Arch以外のディストリビューションを使う際にも参考になります。
         ただしインストールや初期設定にはLinuxの知識が必要なため、他のディストリビューションである程度Linuxに慣れてから挑戦することをおすすめします。
@@ -208,13 +208,19 @@
         これらはDirectXの命令をクロスプラットフォームなグラフィックスAPIであるVulkanに変換することで、Linux上での描画を実現しています。
         DXVKがDirectX 9/10/11を、VKD3DがDirectX 12をそれぞれVulkanに変換しています。<br><br>
 
-        <figure class="spacer-2"">
+        <figure class="spacer-2">
           <img src="assets/zzz1.webp">
           <figcaption>Protonを使いArchLinux上で動いているZenlessZoneZero</figcaption>
         </figure>
 
         Steamでは多くのゲームがProtonによって動作確認されており、Steam Deckの登場以降は対応タイトルが急速に増加しています。
         対応状況は<a class="link" href="https://www.protondb.com/">ProtonDB</a>で確認できます。<br><br>
+
+        <mark>
+          ただし一部のアンチチートが入っているゲームはLinuxでは起動しません。
+          EACやBattlEyeなどの主要なアンチチートはProtonに対応していますが、ゲーム開発者側が有効にしていない場合は動作しません。
+          プレイしたいゲームがLinuxで動作するかはProtonDBで事前に確認することをおすすめします。<br><br>
+        </mark>
 
         しかし全てのゲームがSteamにあるわけではありません。
         Epic GamesやGOG、Amazon Gamesなど他のプラットフォームのゲームや、スタンドアロンのWindows用ゲームもLinuxでプレイすることができます。<br><br>
