@@ -19,7 +19,6 @@
     </defs>
   </svg>
 
-
   <head>
     <title>LINUX GAMING 🐧</title>
     <meta charset="UTF-8">
@@ -54,14 +53,31 @@
       <div class="sections-nav">
         <h3 class="center title">目次</h3>
         <ul>
-          <li><a>AMD vs NVIDIA</a></li>
-          <li><a>DISTRIBUTION</a></li>
-          <li><a>PROTON</a></li>
+          <li><a href="#why-use-linux">なぜLinuxを使うのか</a></li>
+          <li><a href="#amd-vs-nvidia">AMD vs NVIDIA</a></li>
+          <li><a href="#distribution">DISTRIBUTION</a></li>
+          <li><a href="#proton">PROTON</a></li>
         </ul>
       </div>
     </section>
 
-    <section>
+    <section id="why-use-linux">
+      <h2 class="center title">なぜLinuxを使うのか</h2>
+      <p>
+        ゲームをするうえでなぜWindowsではなくLinuxを使うのでしょう？
+        現在のWindowsはCopilotなどのAIが勝手にインストールされており、ゲーム中のアップデート通知、致命的なバグ、広告など、快適にゲームや日常使いができる状態ではありません（少なくとも自分は）。
+        また最近のWindowsはタスクバーのカレンダーやウィジェットなどにWebViewを多用しており、ネイティブアプリに比べてパフォーマンスとメモリを圧迫します。
+        これらの要因が重なり、ゲームに使えるシステムリソースが削られてしまいます。<br><br>
+        一方Linuxでは不要なAIや広告は入っておらず、ゲーム中にアップデート通知が割り込んでくることもありません。
+        Windowsに比べてバックグラウンドで動いているプロセス数も少なく、システムリソースをゲームに集中させることができます。
+        そのためゲームによってはWindowsよりも高いパフォーマンスが出ることもあります。<br><br>
+        パフォーマンスを最大限引き出したいゲーマーにとって、LinuxはWindowsより有利な選択肢と言えるでしょう。<br><br>
+        しかしLinuxでゲームをする際には<mark> Linuxでは一部のアンチチートが入っているゲームが動かない </mark>などのいくつか気をつけることがあります。
+        なので今回はその中の<b>GPU</b>、<b>ディストリビューション</b>、<b>Windows</b>ゲームを動かすことの３つについて解説していきます。
+      </p>
+    </section>
+
+    <section id="amd-vs-nvidia" class="spacer-1">
       <h2 class="center title">
         <span class="amd-title">AMD</span>
         vs
@@ -93,7 +109,7 @@
       <p>
         ディストリビューションとはLinuxカーネルとソフトウェア群を一つのパッケージにして利用できるようにしたものです。
         Linuxを使う上で使用感につながるためディストリビューションの選択も非常に重要になってきます。
-        今回はゲームに最適なのを4つ紹介、説明しようと思います。
+        今回はゲームに最適化されたのを3つ紹介、説明しようと思います。
       </p>
 
       <div class="distro-title spacer-2">
@@ -171,6 +187,11 @@
         また、Arch Wikiは非常に充実しており、トラブルシューティングや設定方法が詳しく解説されているため、Arch以外のディストリビューションを使う際にも参考になります。
         ただしインストールや初期設定にはLinuxの知識が必要なため、他のディストリビューションである程度Linuxに慣れてから挑戦することをおすすめします。
       </p>
+
+      <p class="spacer-1">
+        以上です。様々なディストリビューションがありますが、最終的には実際に触ってみて自分に合っているものを選ぶのが一番です。<br>
+        Linux gamingの世界はますます盛り上がっています。あなたもぜひ挑戦してみてください！<br>
+      </p>
     </section>
 
     <section id="proton">
@@ -207,7 +228,6 @@
 
         これらのツールはWINEやProtonのバージョン管理も簡単に行え、ゲームごとに最適な設定を適用することができます。
       </p>
-
     </section>
   </body>
 

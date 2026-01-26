@@ -25,6 +25,13 @@ html {
   overflow-x: hidden;
 }
 
+mark {
+  background-color: var(--foreground);
+  color: var(--background);
+  font-weight: bold;
+  font-style: italic;
+}
+
 a {
   color: var(--foreground);
   text-decoration: none;
@@ -47,7 +54,8 @@ figcaption {
 }
 
 img {
-  width: 80%;
+  width: 100%;
+  max-width: 700px;
   display: block;
   margin: 0 auto;
   border-radius: 14px;
@@ -167,11 +175,11 @@ header.show {
   animation: glow-sub 7s ease-in-out infinite;
 }
 
-.amd-title::before { background: #ed1c24; }
-.amd-title::after { background: #ff6b35; }
+.amd-title::before { background: var(--foreground); }
+.amd-title::after { background: var(--foreground); }
 
-.nvidia-title::before { background: #76b900; }
-.nvidia-title::after { background: #00d4aa; animation-delay: -5s; }
+.nvidia-title::before { background: var(--foreground); }
+.nvidia-title::after { background: var(--foreground); animation-delay: -5s; }
 
 .nvidia-title::before { animation-delay: -5s; }
 
@@ -179,13 +187,6 @@ header.show {
 #proton h2 {
   -webkit-transform: translateZ(0);
   transform: translateZ(0);
-}
-
-#distribution h2 {
-  filter: drop-shadow(0 0 30px goldenrod);
-}
-#proton h2 {
-  filter: drop-shadow(0 0 30px mediumpurple);
 }
 
 @keyframes glow {
